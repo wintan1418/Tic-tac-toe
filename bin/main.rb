@@ -10,3 +10,7 @@ def create_player
     puts "Welcome " + player2
 end
 create_player
+
+def player_key
+    puts player1 
+end
