@@ -29,6 +29,6 @@ def board_display
     print "#{board[i]} |" if i % 3 != 2
     puts "#{board[i]} " if i % 3 == 2
     i += 1
-    end
+end
 end
 board_display
