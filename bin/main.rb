@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
-puts "welcome to Tic-tac-toe"
+# frozen_string_literal: true
+
+puts 'welcome to Tic-tac-toe'
 
 def create_player
   puts 'Please enter name of the first player'
@@ -28,13 +30,11 @@ def player_switch
   puts 'it is your turn to strike player2'
   switch2 = gets.chomp
   puts "thanks for playing #{switch2}"
-
 end
 player_switch
 
 def move_validity
-  puts "player, make your move"
-  move = gets.chomp
+  puts 'player, make your move '
   board = Array.new(9, 0)
   i = 0
   while i < board.length
@@ -55,5 +55,5 @@ def board_display
     i += 1
   end
 end
-  
+
 board_display
