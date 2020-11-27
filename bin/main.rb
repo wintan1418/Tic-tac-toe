@@ -34,12 +34,14 @@ player_switch
 
 def move_validity
   puts 'player, make your move '
+  user = gets.chomp
   board = Array.new(9, 0)
   i = 0
   while i < board.length
     print "#{board[i]} |" if i % 3 != 2
     puts "#{board[i]} " if i % 3 == 2
     i += 1
+    puts "Good! your move is valid?"
   end
 end
 move_validity
