@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 puts 'welcome to Tic-tac-toe'
 
@@ -13,10 +14,10 @@ end
 create_player
 
 def player_key
-  puts ' Choose your key'
+  puts 'player1 Choose your key'
   key1 = gets.chomp
   puts "Thanks for choosing #{key1}"
-  puts ' Choose your key'
+  puts 'player2 Choose your key'
   key2 = gets.chomp
   puts "Thanks for choosing #{key2}"
 end
@@ -31,7 +32,6 @@ def player_switch
     print "#{board[i]} |" if i % 3 != 2
     puts "#{board[i]} " if i % 3 == 2
     i += 1
-   
   end
   puts "thanks for playing #{switch1}"
   puts 'it is your turn to strike player2'
@@ -42,61 +42,55 @@ def player_switch
     print "#{board[i]} |" if i % 3 != 2
     puts "#{board[i]} " if i % 3 == 2
     i += 1
-  
   end
   puts "thanks for playing #{switch2}"
 end
+
 player_switch
 
 def move_validity
   puts 'player, make your move '
-  user = gets.chomp
+  move = gets.chomp
   board = Array.new(9, 0)
   i = 0
   while i < board.length
     print "#{board[i]} |" if i % 3 != 2
     puts "#{board[i]} " if i % 3 == 2
     i += 1
-   
   end
+  puts "Good! your  #{move} is valid?"
 end
-puts "Good! your move is valid?"
 move_validity
 
 def winning_move
   puts 'please,make your move'
-  user = gets.chomp
+  move = gets.chomp
   board = Array.new(9, 0)
   i = 0
   while i < board.length
     print "#{board[i]} |" if i % 3 != 2
     puts "#{board[i]} " if i % 3 == 2
     i += 1
-  
-  end 
+  end
+  puts "your #{move} as given you a win!"
+  puts 'opppps! play again'
 end
-puts 'your move as given you a win!'
-puts 'opppps! play again'
 winning_move
 
 def draw_move
-puts 'player1,make your move'
-user = gets.chomp
-board = Array.new(9, 0)
-i = 0
-while i < board.length
-  print "#{board[i]} |" if i % 3 != 2
-  puts "#{board[i]} " if i % 3 == 2
-  i += 1
+  puts 'player1,make your move'
+  move = gets.chomp
+  board = Array.new(9, 0)
+  i = 0
+  while i < board.length
+    print "#{board[i]} |" if i % 3 != 2
+    puts "#{board[i]} " if i % 3 == 2
+    i += 1
+  end
+  puts "box is full.you both had a draw tie! #{move}"
+end
 
-end
-puts 'box is full.you both had a draw tie!' 
-end
 draw_move
-
-# def
-#   puts
-# end
 
 def board_display
   puts 'Here is the Board'
