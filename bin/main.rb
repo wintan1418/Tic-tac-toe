@@ -1,6 +1,4 @@
 #!/usr/bin/env ruby
-
-
 puts 'welcome to Tic-tac-toe'
 
 def create_player
