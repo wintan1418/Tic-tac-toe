@@ -57,10 +57,46 @@ def move_validity
     print "#{board[i]} |" if i % 3 != 2
     puts "#{board[i]} " if i % 3 == 2
     i += 1
-    puts "Good! your move is valid?"
+   
   end
 end
+puts "Good! your move is valid?"
 move_validity
+
+def winning_move
+  puts 'please,make your move'
+  user = gets.chomp
+  board = Array.new(9, 0)
+  i = 0
+  while i < board.length
+    print "#{board[i]} |" if i % 3 != 2
+    puts "#{board[i]} " if i % 3 == 2
+    i += 1
+  
+  end 
+end
+puts 'your move as given you a win!'
+puts 'opppps! play again'
+winning_move
+
+def draw_move
+puts 'player1,make your move'
+user = gets.chomp
+board = Array.new(9, 0)
+i = 0
+while i < board.length
+  print "#{board[i]} |" if i % 3 != 2
+  puts "#{board[i]} " if i % 3 == 2
+  i += 1
+
+end
+puts 'box is full.you both had a draw tie!' 
+end
+draw_move
+
+# def
+#   puts
+# end
 
 def board_display
   puts 'Here is the Board'
