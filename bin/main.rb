@@ -13,9 +13,6 @@ def board_display(board)
   end
 end
 
-
-
-
 def create_player
   puts 'Please enter name of the first player'
   player1 = gets.chomp
@@ -93,4 +90,3 @@ def draw_move
 end
 
 draw_move
-
