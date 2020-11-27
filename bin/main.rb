@@ -1,6 +1,20 @@
-#!/usr/bin/env ruby
+# !/usr/bin/env ruby
 
 puts 'welcome to Tic-tac-toe'
+
+def board_display(board)
+  puts 'Here is the Board'
+  # board = Array.new(9, 0)
+  i = 0
+  while i < board.length
+    print "#{board[i]} |" if i % 3 != 2
+    puts "#{board[i]} " if i % 3 == 2
+    i += 1
+  end
+end
+
+
+
 
 def create_player
   puts 'Please enter name of the first player'
@@ -27,17 +41,14 @@ def player_switch
   switch1 = gets.chomp
   board = Array.new(9, 0)
   i = 0
-  while i < board.length
-    print "#{board[i]} |" if i % 3 != 2
-    puts "#{board[i]} " if i % 3 == 2
-    i += 1
-  end
+  board_display(board)
   puts "thanks for playing #{switch1}"
   puts 'it is your turn to strike player2'
   switch2 = gets.chomp
 
-  print "#{board[i]} |" if i % 3 != 2
-  puts "#{board[i]} " if i % 3 == 2
+  board = Array.new(9, 0)
+  i = 0
+  board_display(board)
 
   puts "thanks for playing #{switch2}"
 end
@@ -49,11 +60,8 @@ def move_validity
   move = gets.chomp
   board = Array.new(9, 0)
   i = 0
-  while i < board.length
-    print "#{board[i]} |" if i % 3 != 2
-    puts "#{board[i]} " if i % 3 == 2
-    i += 1
-  end
+  board_display(board)
+
   puts "Good! your  #{move} is valid?"
 end
 move_validity
@@ -63,11 +71,7 @@ def winning_move
   move = gets.chomp
   board = Array.new(9, 0)
   i = 0
-  while i < board.length
-    print "#{board[i]} |" if i % 3 != 2
-    puts "#{board[i]} " if i % 3 == 2
-    i += 1
-  end
+  board_display(board)
   puts "your #{move} as given you a win!"
   puts 'opppps! play again'
 end
@@ -77,26 +81,16 @@ def draw_move
   puts 'player1,make your move'
   move = gets.chomp
   board = Array.new(9, 0)
-  i = 0
-  while i < board.length
-    print "#{board[i]} |" if i % 3 != 2
-    puts "#{board[i]} " if i % 3 == 2
-    i += 1
-  end
+
+  board_display(board)
+  # i = 0
+  # while i < board.length
+  #   print "#{board[i]} |" if i % 3 != 2
+  #   puts "#{board[i]} " if i % 3 == 2
+  #   i += 1
+  # end
   puts "box is full.you both had a draw tie! #{move}"
 end
 
 draw_move
 
-def board_display
-  puts 'Here is the Board'
-  board = Array.new(9, 0)
-  i = 0
-  while i < board.length
-    print "#{board[i]} |" if i % 3 != 2
-    puts "#{board[i]} " if i % 3 == 2
-    i += 1
-  end
-end
-
-board_display
