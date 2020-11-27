@@ -1,4 +1,6 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 puts 'welcome to Tic-tac-toe'
 
 def create_player
@@ -34,13 +36,10 @@ def player_switch
   puts "thanks for playing #{switch1}"
   puts 'it is your turn to strike player2'
   switch2 = gets.chomp
-  board = Array.new(9, 0)
-  i = 0
-  while i < board.length
-    print "#{board[i]} |" if i % 3 != 2
-    puts "#{board[i]} " if i % 3 == 2
-    i += 1
-  end
+
+  print "#{board[i]} |" if i % 3 != 2
+  puts "#{board[i]} " if i % 3 == 2
+
   puts "thanks for playing #{switch2}"
 end
 
