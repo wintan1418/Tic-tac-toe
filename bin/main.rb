@@ -1,8 +1,8 @@
 # !/usr/bin/env ruby
 
-# require_relative '../lib/player.rb'
-# require_relative '../lib/game.rb'
-# require_relative '../lib/board.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/game.rb'
+require_relative '../lib/board.rb'
 
 def display_title
     puts 'WELCOME TO TIC-TAC-TOE GAME'
