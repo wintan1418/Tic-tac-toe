@@ -1,13 +1,27 @@
 # !/usr/bin/env ruby
 
-puts 'welcome to Tic-tac-toe'
+# require_relative '../lib/player.rb'
+# require_relative '../lib/game.rb'
+# require_relative '../lib/board.rb'
 
+def display_title
+    puts 'WELCOME TO TIC-TAC-TOE GAME'
+    puts '    _______ _          _______             _______          
+    (_______|_)        (_______)           (_______)         
+        _    _  ____       _ _____  ____       _  ___  _____ 
+       | |  | |/ ___)     | (____ |/ ___)     | |/ _ \| ___ |
+       | |  | ( (___      | / ___ ( (___      | | |_| | ____|
+       |_|  |_|\____)     |_\_____|\____)     |_|\___/|_____) '                                                         
+end
+display_title
 def board_display(board)
   puts 'Here is the Board'
   i = 0
   while i < board.length
     print "#{board[i]} |" if i % 3 != 2
+    # puts '----------'
     puts "#{board[i]} " if i % 3 == 2
+    # puts '----------'
     i += 1
   end
 end
@@ -35,14 +49,14 @@ player_key
 def player_switch
   puts 'it is your turn to strike player1'
   switch1 = gets.chomp
-  board = Array.new(9, 0)
+  board = Array.new(9)
 
   board_display(board)
   puts "thanks for playing #{switch1}"
   puts 'it is your turn to strike player2'
   switch2 = gets.chomp
 
-  board = Array.new(9, 0)
+  board = Array.new(9)
   board_display(board)
 
   puts "thanks for playing #{switch2}"
