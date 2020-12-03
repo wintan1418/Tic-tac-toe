@@ -14,6 +14,7 @@ def display_title
       |_|  |_|\____)     |_\_____|\____)     |_|\___/|_____) '                                                         
 end
 display_title
+
 def board_display(board)
 puts 'Here is the Board'
 i = 0
@@ -25,6 +26,18 @@ while i < board.length
   i += 1
 end
 end
+
+
+# def board_choice_display
+#   puts '      .-----.-----.-----.      .-----.-----.-----.'
+#   puts "      |  1  |  2  |  3  |      |  #{$b_ar[0]}  |  #{$b_ar[1]}  |  #{$b_ar[2]}  |"
+#   puts '      .-----+-----+-----.      .-----+-----+-----.'
+#   puts "      |  4  |  5  |  6  | ==>> |  #{$b_ar[3]}  |  #{$b_ar[4]}  |  #{$b_ar[5]}  |"
+#   puts '      .-----+-----+-----.      .-----+-----+-----.'
+#   puts "      |  7  |  8  |  9  |      |  #{$b_ar[6]}  |  #{$b_ar[7]}  |  #{$b_ar[8]}  |"
+#   puts '      .-----.-----.-----.      .-----.-----.-----.'
+# end
+
 
 def create_player
 puts 'Please enter name of the first player'
@@ -43,9 +56,13 @@ if key1 != 'x' && key1 != 'o'
   puts 'Invalid key, choose x or o'
   player_key
 end
-puts 'player 1 you are assigned o'
-if key1 != 'x' 
-  puts 'player 2 you are assigned x'
+puts "player 1 you are assigned #{key1}"
+puts "player2 choose your key"
+key2 = gets.chomp.downcase
+if key2 != key1 && key2 == 'x' && key2 == 'o'
+  puts "player 2 you are assigned #{key2}"
+else
+    puts "invalid choice"
 end
 end
 player_key
@@ -69,27 +86,28 @@ player_key
 # player_key
 
 def player_switch
+  
 puts 'it is your turn to strike player1'
 switch1 = gets.chomp
 
-board = Array.new(9)
+board = Array.new(9,0)
 board_display(board)
 puts "thanks for playing #{switch1}"
+
 puts 'it is your turn to strike player2'
 switch2 = gets.chomp
-
-board = Array.new(9)
+board = Array.new(9,0)
 board_display(board)
-
 puts "thanks for playing #{switch2}"
 end
 
 player_switch
 
+
 def move_validity
 puts 'player, make your move '
 move = gets.chomp
-board = Array.new(9, 0)
+board = Array.new(9,0)
 board_display(board)
 
 puts "Good! your  #{move} is valid?"
