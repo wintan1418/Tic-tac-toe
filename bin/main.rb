@@ -87,10 +87,25 @@ end
 player_switch
 
 def move_validity
-puts 'player, make your move '
-move = gets.chomp
+  move_validity = true
+  while move_validity
+puts 'player1, make your move '
+move1 = gets.chomp
+Array.new(9)
 board_display
-puts "Good! your  #{move} is valid?"
+puts "player2,make your move"
+move2 = gets.chomp
+Array.new(9)
+board_display
+
+ if  move1 == move2 && move1 != (1..9) && move2 != (1..9) 
+  puts "invalid move"
+  move_validity = false
+else
+  puts "move valid!"
+  move_validity
+end
+end
 end
 move_validity
 
