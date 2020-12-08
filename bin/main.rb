@@ -57,7 +57,8 @@ def player_switch
 player_switch = true
 puts 'it is your turn to strike player1'
 switch1 = gets.chomp.to_i
-
+$board.update_board(switch1 - 1, $player_1)
+board_display
 puts "thanks for playing #{switch1}"
 puts 'it is your turn to strike player2'
 switch2 = gets.chomp.to_i
@@ -86,9 +87,19 @@ end
 
 player_switch
 
+def turn_count(board)
+  counter = 0
+  board.each do |spaces|
+     if spaces == "X" || spaces == "O"
+        counter += 1
+     end
+  end
+  counter
+end
+
 def move_validity
   move_validity = true
-  while move_validity
+  
 puts 'player1, make your move '
 move1 = gets.chomp
 Array.new(9)
@@ -97,13 +108,17 @@ puts "player2,make your move"
 move2 = gets.chomp
 Array.new(9)
 board_display
-
- if  move1 == move2 && move1 != (1..9) && move2 != (1..9) 
-  puts "invalid move"
-  move_validity = true
+i = 0
+  while i <= 9
+ if  move1 == move2 &&  move1 || move2 > ("9")
+  puts "invalid move" 
+  # puts "enter an integer 4between 1-9"
 else
-  puts "move valid!"
-  
+  puts "valid move"
+  i += 1
+  break
+  move_validity = false
+ 
 end
 end
 end
