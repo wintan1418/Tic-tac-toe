@@ -20,7 +20,7 @@ puts "\n\nPress Enter to start playing"
 gets
 
 begin
-  system('clear')
+  #system('clear')
   puts 'Press y to begin Tic-tac-toe'
   puts 'Press n to stop playing'
   input_opt = gets.chomp
@@ -28,7 +28,7 @@ begin
 
   if input_opt == 'y'
     loop do
-      system('clear')
+      #system('clear')
       puts 'Enter player 1 name'
       player1_name = gets.chomp
 
