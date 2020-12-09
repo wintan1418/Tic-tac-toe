@@ -1,21 +1,89 @@
 class Board
-  attr_reader :key, :moves
+  attr_accessor :board
+  # :key, :moves
 
+  # def initialize
+  #   @key = Array.new(9)
+  #   @moves = []
+  # end
+
+  # def update_board(picked_cell, player)
+  #   @key[picked_cell] = player.key
+  # end
   def initialize
-    @key = Array.new(9)
-    @moves = []
+    @board = Array.new(3) { Array.new(3, '_') }
   end
 
-  def update_board(picked_cell, player)
-    @key[picked_cell] = player.key
+  def update(value, pos)
+    @board[pos[0]][pos[1]] = value
   end
 
-  def board_display
-    i = 0
-    while i < board.length
-      print "#{board[i]} |" if i % 3 != 2
-      puts board[i].to_s if i % 3 == 2
-      i += 1
-    end
+  # def board_display
+  #   i = 0
+  #   while i < board.length
+  #     print "#{board[i]} |" if i % 3 != 2
+  #     puts board[i].to_s if i % 3 == 2
+  #     i += 1
+  #   end
+  # end
+  def legal_input?(pos)
+    arr = pos.split('')
+    x_axis = arr[1]
+    y_axis = arr[0].upcase
+    return true if (%w[A B C].include? y_axis) && (%w[1 2 3].include? x_axis)
+  
+    false
   end
+  def cell_empty?(pos)
+    return true if @board[pos[0]][pos[1]] == '_'
+  
+    false
+  end
+  def status
+    return 1 if check_if_x_win || check_if_y_win || check_if_diag_win
+  
+    # check for tie
+    # If board is full and no winner it means tie.
+    0 unless @board.flatten.any?('_')
+  end
+  def draw
+    puts '    ___________'
+    puts "C  |_#{@board[2][0]}_|_#{@board[2][1]}_|_#{@board[2][2]}_|"
+    puts "B  |_#{@board[1][0]}_|_#{@board[1][1]}_|_#{@board[1][2]}_|"
+    puts "A  |_#{@board[0][0]}_|_#{@board[0][1]}_|_#{@board[0][2]}_|"
+    puts "     1   2   3\t\t"
+  end
+
+  private
+end
+
+
+
+def status
+  return 1 if check_x_win || check_y_win || check_diag_win
+
+  # check for tie
+  # If board is full and no winner it means tie.
+  0 unless @board.flatten.any?('_')
+end
+def check_y_win
+  rows = @board.transpose
+  rows.each do |y_axis|
+    return y_axis.all?('X') || y_axis.all?('O')
+  end
+end
+
+def check_x_win
+  @board.each do |x_axis|
+    return x_axis.all?('X') || x_axis.all?('O')
+  end
+end
+
+def check_diagonal_win
+  if @board[1][1] != '_'
+    diag1 = @board[0][0] == @board[1][1] && @board[1][1] == @board[2][2]
+    diag2 = @board[0][2] == @board[1][1] && @board[1][1] == @board[2][0]
+    return diag1 || diag2
+  end
+  false
 end

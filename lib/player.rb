@@ -1,8 +1,16 @@
 class Player
-  attr_accessor :name, :key
+#   attr_accessor :name, :key
 
-  def initialize(name, key)
+#   def initialize(name, key)
+#     @name = name
+#     @key = key
+#   end
+# end
+attr_reader :name
+  attr_accessor :type
+
+  def initialize(name)
     @name = name
-    @key = key
+    @type = '_'
   end
 end
