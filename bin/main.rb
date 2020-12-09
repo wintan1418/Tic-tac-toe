@@ -5,19 +5,18 @@
 
 # def get_player_tag(tag_num)
 # puts "Enter your tag x | o player #{tag_num} tag:"
-# gets.chomp 
+# gets.chomp
 # end
 
 # def create_player
 # player_1_name = request_user_name(1)
-# player_1 = get_player_tag(1) 
+# player_1 = get_player_tag(1)
 # player_2_name = request_user_name(2)
-# player_2 = get_player_tag(2) 
+# player_2 = get_player_tag(2)
 # $player_1 = Player.new(player_1_name, player_1)
 # $player_2 = Player.new(player_2_name, player_2)
 # end
 # create_player
-
 
 # def player_switch
 # player_switch = true
@@ -36,7 +35,7 @@
 # #   puts "it's your turn to strike first player"
 # #   first_player = gets.chomp.downcase
 # #   puts  "it's your turn to strike second player"
-# #   second_player = gets.chomp.downcase 
+# #   second_player = gets.chomp.downcase
 # #   if first_player == "x" && second_player == "o"
 # #     puts "switch to the next player"
 # #     player_switch = false
@@ -49,7 +48,6 @@
 
 # #   end
 # end
-
 
 # player_switch
 
@@ -65,7 +63,7 @@
 
 # def move_validity
 #   move_validity = true
-  
+
 # puts 'player1, make your move '
 # move1 = gets.chomp
 # Array.new(9)
@@ -77,14 +75,14 @@
 # i = 0
 #   while i <= 9
 #  if  move1 == move2 &&  move1 || move2 > ("9")
-#   puts "invalid move" 
+#   puts "invalid move"
 #   # puts "enter an integer 4between 1-9"
 # else
 #   puts "valid move"
 #   i += 1
 #   break
 #   move_validity = false
- 
+
 # end
 # end
 # end
@@ -109,22 +107,20 @@
 # end
 # draw_move
 
-
 # def play
 #   loop do
 #   @board.draw
 #   input(@player1)
 #   # system('clear')
 #   break unless check_outcome(@player1) == -1
-  
+
 #   @board.draw
 #   input(@player2)
 #   # system('clear')
 #   break unless check_outcome(@player1) == -1
-  
+
 #   end
 #   end
-  
 
 #   def input(player)
 #   playing = false
@@ -146,7 +142,6 @@
 #     end
 #   end
 #   end
-
 
 #   def virgin_position(input_pos)
 #     arr = input_pos.split('')
@@ -191,9 +186,7 @@
 # private
 # board_display
 
-  # def start
-
-
+# def start
 
 # !/usr/bin/env ruby
 require_relative '../lib/player'
@@ -201,8 +194,8 @@ require_relative '../lib/game'
 require_relative '../lib/board'
 
 def display_title
-puts 'WELCOME TO TIC-TAC-TOE GAME'
-puts '    _______ _          _______             _______
+  puts 'WELCOME TO TIC-TAC-TOE GAME'
+  puts '    _______ _          _______             _______
 (_______|_)        (_______)           (_______)
   _    _  ____       _ _____  ____       _  ___  _____
   | |  | |/ ___)     | (____ |/ ___)     | |/ _ \| ___ |
@@ -215,8 +208,7 @@ display_title
 puts "\n\nPress Enter to start playing"
 gets
 
-
-  begin
+begin
   system('clear')
   puts 'Press y to begin Tic-tac-toe'
   puts 'Press n to stop playing'
@@ -246,5 +238,3 @@ gets
 rescue StandardError
   retry
 end
-
-
