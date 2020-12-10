@@ -1,3 +1,4 @@
+
 class Board
   attr_accessor :board
 
@@ -9,7 +10,8 @@ class Board
     @board[pos[0]][pos[1]] = value
   end
 
-  def legal_input?(pos)
+  # Check if user input is valid
+  def valid_input?(pos)
     arr = pos.split('')
     x_axis = arr[1]
     y_axis = arr[0].upcase
@@ -18,7 +20,7 @@ class Board
     false
   end
 
-  def cell_empty?(pos)
+  def empty_spot?(pos)
     return true if @board[pos[0]][pos[1]] == '_'
 
     false
@@ -27,9 +29,11 @@ class Board
   def status
     return 1 if check_if_x_win || check_if_y_win || check_if_diag_win
 
+    
     0 unless @board.flatten.any?('_')
   end
 
+  
   def draw
     puts '    ___________'
     puts "C  |_#{@board[2][0]}_|_#{@board[2][1]}_|_#{@board[2][2]}_|"
@@ -37,32 +41,28 @@ class Board
     puts "A  |_#{@board[0][0]}_|_#{@board[0][1]}_|_#{@board[0][2]}_|"
     puts "     1   2   3\t\t"
   end
-end
 
-def status
-  return 1 if check_x_win || check_y_win || check_diag_win
+  private
 
-  0 unless @board.flatten.any?('_')
-end
-
-def check_y_win
-  rows = @board.transpose
-  rows.each do |y_axis|
-    return y_axis.all?('X') || y_axis.all?('O')
+  def check_if_y_win
+    rows = @board.transpose
+    rows.each do |y_axis|
+      return y_axis.all?('X') || y_axis.all?('O')
+    end
   end
-end
 
-def check_x_win
-  @board.each do |x_axis|
-    return x_axis.all?('X') || x_axis.all?('O')
+  def check_if_x_win
+    @board.each do |x_axis|
+      return x_axis.all?('X') || x_axis.all?('O')
+    end
   end
-end
 
-def check_diagonal_win
-  if @board[1][1] != '_'
-    diag1 = @board[0][0] == @board[1][1] && @board[1][1] == @board[2][2]
-    diag2 = @board[0][2] == @board[1][1] && @board[1][1] == @board[2][0]
-    return diag1 || diag2
+  def check_if_diag_win
+    if @board[1][1] != '_'
+      diag1 = @board[0][0] == @board[1][1] && @board[1][1] == @board[2][2]
+      diag2 = @board[0][2] == @board[1][1] && @board[1][1] == @board[2][0]
+      return diag1 || diag2
+    end
+    false
   end
-  false
 end
