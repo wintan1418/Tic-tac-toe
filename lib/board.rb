@@ -1,4 +1,3 @@
-
 class Board
   attr_accessor :board
 
@@ -29,11 +28,9 @@ class Board
   def status
     return 1 if check_if_x_win || check_if_y_win || check_if_diag_win
 
-    
     0 unless @board.flatten.any?('_')
   end
 
-  
   def draw
     puts '    ___________'
     puts "C  |_#{@board[2][0]}_|_#{@board[2][1]}_|_#{@board[2][2]}_|"
