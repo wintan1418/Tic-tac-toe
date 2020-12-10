@@ -1,4 +1,3 @@
-
 # !/usr/bin/env ruby
 require_relative '../lib/player'
 require_relative '../lib/game'
@@ -20,7 +19,6 @@ puts "\n\nPress Enter to start playing"
 gets
 
 begin
-
   puts 'Press y to begin Tic-tac-toe'
   puts 'Press n to stop playing'
   input_opt = gets.chomp
@@ -28,13 +26,12 @@ begin
 
   if input_opt == 'y'
     loop do
-     
       puts 'Enter player 1 name'
       player1_name = gets.chomp
 
       puts 'Enter player 2 name'
       player2_name = gets.chomp
-    
+
       game = Game.new(player1_name, player2_name)
       game.play
 
@@ -47,5 +44,3 @@ begin
 rescue StandardError
   retry
 end
-
-
