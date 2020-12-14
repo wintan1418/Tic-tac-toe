@@ -69,10 +69,34 @@ class Board
   end
 
   def status
-    return 1 if check_if_x_win || check_if_y_win || check_if_diag_win
+    # puts "work!!"
+    # return 1 if check_if_x_win || check_if_y_win || check_if_diag_win
 
-    0 unless @board.flatten.any?('_')
+    
+  if check_if_x_win || check_if_y_win || check_if_diag_win
+  puts "win"
+  return 1
+  else
+    # return 0
+puts "no win"
   end
+end
+
+def winner(player)
+
+
+  b = @board
+
+  diagonal = [[b[0][0], b[1][1], b[2][2]], [b[0][2], b[1][1], b[2][0]]]
+  winning_sequence = b + b.transpose + diagonal
+  win = []
+  winning_sequence.each do |item|
+    win.push(item.all?(player.type))
+  end
+  return 1 if win.any? == true
+  return  0 unless @board.flatten.any?('_')
+-1
+end
 
   def draw
     puts '    ___________'

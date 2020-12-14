@@ -23,6 +23,7 @@ class Game
 
   def input(player)
     playing = false
+   
 
     until playing
       puts "\n#{player.name}'s turn to strike"
@@ -37,6 +38,7 @@ class Game
         end
        
         @board.update(player.type, pos)
+       
         puts 'about to draw board'
         @board.draw 
         verify_result(player)
@@ -61,7 +63,10 @@ class Game
   end
 
   def verify_result(player)
-      case @board.status
+    # puts player.name
+    # puts @board.status + "error add"
+    puts @board.winner(player)
+     case @board.winner(player)
       when 1
         puts "*** #{player.name} Won Congratulations! ***"
         1
@@ -70,6 +75,7 @@ class Game
         0
       else
         -1
+       
       end
     end
 end
