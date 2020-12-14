@@ -1,8 +1,9 @@
-class Players
-  attr_accessor :name, :char, :player_input
-  def initialize(name, char)
+class Player
+  attr_reader :name
+  attr_accessor :type
+
+  def initialize(name)
     @name = name
-    @char = char
-    @player_input = []
+    @type = '_'
   end
 end

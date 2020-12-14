@@ -14,7 +14,7 @@ class Game
 
       break unless verify_result(@player1) == -1
 
-      @board.draw
+      @board.draw 
       input(@player2)
 
       break unless verify_result(@player2) == -1
@@ -38,7 +38,7 @@ class Game
        
         @board.update(player.type, pos)
         puts 'about to draw board'
-        @board.draw
+        @board.draw 
         verify_result(player)
         playing = true
       else
@@ -61,8 +61,15 @@ class Game
   end
 
   def verify_result(player)
-    if board.won?(player.player_input)      
-        puts "#{playa.name} Wins!!!"
+      case @board.status
+      when 1
+        puts "*** #{player.name} Won Congratulations! ***"
+        1
+      when 0
+        puts "*** you played a draw***"
+        0
+      else
+        -1
+      end
     end
-end
 end
