@@ -7,3 +7,4 @@ class Player
     @type = '___'
   end
 end
+

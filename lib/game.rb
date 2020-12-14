@@ -38,7 +38,7 @@ class Game
         @board.update(player.type, pos)
         puts 'about to draw board'
         @board.draw
-        @board.status
+        @board.win(player)
         verify_result(player)
         playing = true
       else
