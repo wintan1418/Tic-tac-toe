@@ -35,6 +35,7 @@ class Game
           puts '***  not an empty cell. Please strike again. ***'
           next
         end
+       
         @board.update(player.type, pos)
         puts 'about to draw board'
         @board.draw
@@ -60,15 +61,8 @@ class Game
   end
 
   def verify_result(player)
-    case @board.status
-    when 1
-      puts "*** #{player.name} made it a win for him/her self ***"
-      1
-    when 0
-      puts '*** You both tuggled to a draw ***'
-      0
-    else
-      -1
+    if board.won?(player.player_input)      
+        puts "#{playa.name} Wins!!!"
     end
-  end
+end
 end
