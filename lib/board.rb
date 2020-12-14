@@ -25,11 +25,11 @@ class Board
     false
   end
 
-  # def status
-  #   return 1 if check_if_x_win || check_if_y_win || check_if_diag_win
+  def status
+    return 1 if check_if_x_win || check_if_y_win || check_if_diag_win
 
-  #   0 unless @board.flatten.any?('_')
-  # end
+    0 unless @board.flatten.any?('_')
+  end
 
   def draw
     puts '    ___________'
@@ -41,23 +41,23 @@ class Board
 
   private
   
-  def check_if_x_win
-    if  @board[2][1] && @board[1][1] && @board[0][1]  != '_'
-     x1 = @board[0][0] == @board[1][0] && @board[1][0] == @board[2][0]
-     x2 = @board[0][1] == @board[1][1] && @board[1][1] == @board[2][1]
-     x3 = @board[0][2] == @board[1][2] && @board[1][2] == @board[2][2]
-      return x1.all?('X') || x1.all?('O') || x2.all?('X') || x2.all?('O') || x3.all?('X') || x3.all?('O')
-     end
-      false
-  end
+  # def check_if_x_win
+  #   if  @board[2][1] && @board[1][1] && @board[0][1]  != '_'
+  #    x1 = @board[0][0] == @board[1][0] && @board[1][0] == @board[2][0]
+  #    x2 = @board[0][1] == @board[1][1] && @board[1][1] == @board[2][1]
+  #    x3 = @board[0][2] == @board[1][2] && @board[1][2] == @board[2][2]
+  #    return x1 || x2 || x3
+  #    end
+  #     false
+  # end
   
 
-#   # def check_if_y_win
-#   #   rows = @board.transpose
-#   #   rows.each do |y_axis|
-#   #     return y_axis.all?('X') || y_axis.all?('O')
-#   #   end
-#   # end
+  def check_if_y_win
+    rows = @board.transpose
+    rows.each do |y_axis|
+      return y_axis.all?('X') || y_axis.all?('O')
+    end
+  end
 # #   def check_if_x_win
 # #     if  @board[0][1]   != '_'
 # #      x1 = @board[0][0] == @board[1][0] && @board[1][0] == @board[2][0]
@@ -74,15 +74,15 @@ class Board
 # #        false
 # #    end
 
-  def check_if_y_win
- if  @board[1][0] && @board[1][1] && @board[1][2]  != '_'
-  y1 = @board[0][0] == @board[1][0] && @board[1][0] == @board[2][0]
-  y2 = @board[0][1] == @board[1][1] && @board[1][1] == @board[2][1]
-  y3 = @board[0][2] == @board[1][2] && @board[1][2] == @board[2][2]
-    return y1.all?('X') || y1.all?('O') || y2.all?('X') || y2.all?('O') || y3.all?('X') || y3.all?('O')
-  end
-    false
-  end
+# def check_if_y_win
+#  if  @board[1][0] && @board[1][1] && @board[1][2]  != '_'
+#   y1 = @board[0][0] == @board[1][0] && @board[1][0] == @board[2][0]
+#   y2 = @board[0][1] == @board[1][1] && @board[1][1] == @board[2][1]
+#   y3 = @board[0][2] == @board[1][2] && @board[1][2] == @board[2][2]
+#   return y1 || y2 || y3
+#   end
+#     false
+#   end
 
 
 # def win(player)
@@ -100,11 +100,11 @@ class Board
 #   win.any?
 # end
 
-#   # def check_if_x_win
-#   #   @board.each do |x_axis|
-#   #     return x_axis.all?('X') || x_axis.all?('O')
-#   #   end
-#   # end
+  def check_if_x_win
+    @board.each do |x_axis|
+      return x_axis.all?('X') || x_axis.all?('O')
+    end
+  end
      
 
   def check_if_diag_win
