@@ -35,10 +35,8 @@ begin
       game = Game.new(player1_name, player2_name)
       game.play
 
-      puts "\nEnter y to play again or n to quit"
-      input_opt = gets.chomp
-      break if input_opt == 'y'
-      next if input_opt == 'n'
+      puts "\nTHANK YOU FOR PLAYING"
+      break
     end
   end
 rescue StandardError

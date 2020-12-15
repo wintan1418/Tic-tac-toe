@@ -63,8 +63,6 @@ class Game
   end
 
   def verify_result(player)
-    # puts player.name
-    # puts @board.status + "error add"
     puts @board.winner(player)
      case @board.winner(player)
       when 1
