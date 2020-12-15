@@ -14,7 +14,7 @@ class Game
 
       break unless verify_result(@player1) == -1
 
-      @board.draw 
+      @board.draw
       input(@player2)
 
       break unless verify_result(@player2) == -1
@@ -23,7 +23,6 @@ class Game
 
   def input(player)
     playing = false
-   
 
     until playing
       puts "\n#{player.name}'s turn to strike"
@@ -36,11 +35,11 @@ class Game
           puts '***  not an empty cell. Please strike again. ***'
           next
         end
-       
+
         @board.update(player.type, pos)
-       
+
         puts 'about to draw board'
-        @board.draw 
+        @board.draw
         verify_result(player)
         playing = true
       else
@@ -64,16 +63,15 @@ class Game
 
   def verify_result(player)
     puts @board.winner(player)
-     case @board.winner(player)
-      when 1
-        puts "*** #{player.name} Won Congratulations! ***"
-        1
-      when 0
-        puts "*** you played a draw***"
-        0
-      else
-        -1
-       
-      end
+    case @board.winner(player)
+    when 1
+      puts "*** #{player.name} Won Congratulations! ***"
+      1
+    when 0
+      puts '*** you played a draw***'
+      0
+    else
+      -1
+     end
     end
 end
