@@ -14,12 +14,12 @@ class Game
 
   def play
     loop do
-     puts @board.draw
+      puts @board.draw
       input(@player1)
 
       break unless verify_result(@player1) == -1
 
-    puts  @board.draw
+      puts @board.draw
       input(@player2)
 
       break unless verify_result(@player2) == -1
@@ -44,7 +44,7 @@ class Game
         @board.update(player.type, pos)
 
         puts 'about to draw board'
-      puts  @board.draw
+        puts @board.draw
         verify_result(player)
         playing = true
       else
@@ -80,7 +80,6 @@ class Game
     end
 end
 
-
 def display_title
   puts 'WELCOME TO TIC-TAC-TOE GAME'
   puts '    _______ _          _______             _______
@@ -111,19 +110,18 @@ begin
 
       game = Game.new(player1_name, player2_name)
 
-  # def draw(b)
-  # puts '    ___________'
-  # puts "C  |_#{b[2][0]}_|_#{b[2][1]}_|_#{b[2][2]}_|"
-  # puts "B  |_#{b[1][0]}_|_#{b[1][1]}_|_#{b[1][2]}_|"
-  # puts "A  |_#{b[0][0]}_|_#{b[0][1]}_|_#{b[0][2]}_|"
-  # puts "     1   2   3\t\t"
-  # end
-  # board1 = game.board
-  # draw(board1.board)
-  # puts board1
+      # def draw(b)
+      # puts '    ___________'
+      # puts "C  |_#{b[2][0]}_|_#{b[2][1]}_|_#{b[2][2]}_|"
+      # puts "B  |_#{b[1][0]}_|_#{b[1][1]}_|_#{b[1][2]}_|"
+      # puts "A  |_#{b[0][0]}_|_#{b[0][1]}_|_#{b[0][2]}_|"
+      # puts "     1   2   3\t\t"
+      # end
+      # board1 = game.board
+      # draw(board1.board)
+      # puts board1
 
       game.play
-
 
       puts "\nTHANK YOU FOR PLAYING"
       break
@@ -132,4 +130,3 @@ begin
 rescue StandardError
   retry
 end
-
