@@ -9,7 +9,6 @@ class Board
     @board[pos[0]][pos[1]] = type
   end
 
- 
   def valid_input?(pos)
     arr = pos.split('')
     x_axis = arr[1]
@@ -25,7 +24,6 @@ class Board
     false
   end
 
-  
   def winner(player)
     b = @board
 
@@ -42,16 +40,13 @@ class Board
   end
 
   def draw
-    output = ""
-     output += "\n __________________"
+    output = ''
+    output += "\n __________________"
 
-     output += "\nC  |_#{@board[2][0]}_|_#{@board[2][1]}_|_#{@board[2][2]}_|"
-     output += "\nB  |_#{@board[1][0]}_|_#{@board[1][1]}_|_#{@board[1][2]}_|"
-     output += "\nA  |_#{@board[0][0]}_|_#{@board[0][1]}_|_#{@board[0][2]}_|"
-     output += "\n     1   2   3\t\t"
-     output
+    output += "\nC  |_#{@board[2][0]}_|_#{@board[2][1]}_|_#{@board[2][2]}_|"
+    output += "\nB  |_#{@board[1][0]}_|_#{@board[1][1]}_|_#{@board[1][2]}_|"
+    output += "\nA  |_#{@board[0][0]}_|_#{@board[0][1]}_|_#{@board[0][2]}_|"
+    output += "\n     1   2   3\t\t"
+    output
   end
-
-
-  
 end
