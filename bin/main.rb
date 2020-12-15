@@ -55,4 +55,7 @@ rescue StandardError
   retry
 end
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14fc5e9be878ef799193c0d863c5a0e3c1c7c08e
