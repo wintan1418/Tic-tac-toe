@@ -6,4 +6,4 @@ class Player
     @name = name
     @type = '_'
   end
-end
+end 
