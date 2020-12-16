@@ -1,83 +1,120 @@
 # !/usr/bin/env ruby
+require_relative '../lib/player'
+require_relative '../lib/board'
 
-puts 'welcome to Tic-tac-toe'
-
-def board_display(board)
-  puts 'Here is the Board'
-  i = 0
-  while i < board.length
-    print "#{board[i]} |" if i % 3 != 2
-    puts "#{board[i]} " if i % 3 == 2
-    i += 1
+class Game
+  def initialize(player1_name, player2_name)
+    @player1 = Player.new(player1_name)
+    @player1.type = 'X'
+    @player2 = Player.new(player2_name)
+    @player2.type = 'O'
+    @board = Board.new
   end
+
+  def play
+    loop do
+      puts @board.draw
+      input(@player1)
+
+      break unless verify_result(@player1) == -1
+
+      puts @board.draw
+      input(@player2)
+
+      break unless verify_result(@player2) == -1
+    end
+  end
+
+  def input(player)
+    playing = false
+
+    until playing
+      puts "\n#{player.name}'s turn to strike"
+      puts "\nEnter your strike position (A-C,1-3,FOR BOTH Y AND X AXIS)"
+      input_pos = gets.chomp
+      valid = @board.valid_input?(input_pos)
+      if valid
+        pos = virgin_position(input_pos)
+        unless @board.empty_spot?(pos)
+          puts '***  not an empty cell. Please strike again. ***'
+          next
+        end
+
+        @board.update(player.type, pos)
+
+        puts 'about to draw board'
+        puts @board.draw
+        verify_result(player)
+        playing = true
+      else
+        puts '*** invalid move! please strike again! ***'
+      end
+
+    end
+  end
+
+  def virgin_position(input_pos)
+    arr = input_pos.split('')
+    x_axis = arr[1].to_i - 1
+    y_axis = arr[0].upcase
+    case y_axis
+    when 'A' then y_axis = 0
+    when 'B' then y_axis = 1
+    when 'C' then y_axis = 2
+    end
+    [y_axis, x_axis]
+  end
+
+  def verify_result(player)
+    case @board.winner(player)
+    when 1
+      puts "*** #{player.name} Won Congratulations! ***"
+      1
+    when 0
+      puts '*** you played a draw***'
+      0
+    else
+      -1
+    end
+    end
 end
 
-def create_player
-  puts 'Please enter name of the first player'
-  player1 = gets.chomp
-  puts "Welcome #{player1}"
-  puts 'Please enter name of the second player'
-  player2 = gets.chomp
-  puts "Welcome #{player2}"
+def display_title
+  puts 'WELCOME TO TIC-TAC-TOE GAME'
+  puts '    _______ _          _______             _______
+(_______|_)        (_______)           (_______)
+  _    _  ____       _ _____  ____       _  ___  _____
+  | |  | |/ ___)     | (____ |/ ___)     | |/ _ \| ___ |
+  | |  | ( (___      | / ___ ( (___      | | |_| | ____|
+  |_|  |_|\____)     |_\_____|\____)     |_|\___/|_____) '
 end
-create_player
+display_title
 
-def player_key
-  puts 'player1 Choose your key'
-  key1 = gets.chomp
-  puts "Thanks for choosing #{key1}"
-  puts 'player2 Choose your key'
-  key2 = gets.chomp
-  puts "Thanks for choosing #{key2}"
+puts "\n\nPress Enter to start playing"
+gets
+
+begin
+  puts 'Press y to begin Tic-tac-toe'
+  puts 'Press n to stop playing'
+  input_opt = gets.chomp
+  raise unless input_opt.include?('y') || input_opt.include?('n')
+
+  if input_opt == 'y'
+    loop do
+      puts 'Enter player 1 name'
+      player1_name = gets.chomp
+
+      puts 'Enter player 2 name'
+      player2_name = gets.chomp
+
+      game = Game.new(player1_name, player2_name)
+
+      game.play
+
+      puts "\nTHANK YOU FOR PLAYING"
+      break
+    end
+  end
+rescue StandardError
+  retry
 end
-player_key
-
-def player_switch
-  puts 'it is your turn to strike player1'
-  switch1 = gets.chomp
-  board = Array.new(9, 0)
-
-  board_display(board)
-  puts "thanks for playing #{switch1}"
-  puts 'it is your turn to strike player2'
-  switch2 = gets.chomp
-
-  board = Array.new(9, 0)
-  board_display(board)
-
-  puts "thanks for playing #{switch2}"
-end
-
-player_switch
-
-def move_validity
-  puts 'player, make your move '
-  move = gets.chomp
-  board = Array.new(9, 0)
-  board_display(board)
-
-  puts "Good! your  #{move} is valid?"
-end
-move_validity
-
-def winning_move
-  puts 'please,make your move'
-  move = gets.chomp
-  board = Array.new(9, 0)
-  board_display(board)
-
-  puts "your #{move} as given you a win!"
-  puts 'opppps! play again'
-end
-winning_move
-
-def draw_move
-  puts 'player1,make your move'
-  move = gets.chomp
-  board = Array.new(9, 0)
-  board_display(board)
-
-  puts "box is full.you both had a draw tie! #{move}"
-end
-
-draw_move
