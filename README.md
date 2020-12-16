@@ -38,6 +38,13 @@ Tic Tac Toe is a game in which two players alternately put Xs and Os in compartm
 - Twitter: [@IKineza](https://twitter.com/IKineza)
 - LinkedIn: [Iris Enaelle Kineza](https://www.linkedin.com/in/iris-enaelle-kineza-25a676187/)
 
+ 👤 **Oluwadare Juwon**
+
+- GitHub: [@wintan1418](https://github.com/wintan1418)
+- Twitter: [@juwonoluwadare](https://twitter.com/oluwadarejuwon)
+- LinkedIn: [Oluwadare Juwon](https://www.linkedin.com/in/oluwadare-juwon-048a391a8/)
+
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
